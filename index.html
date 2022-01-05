@@ -17,70 +17,205 @@
 
    
     /*Let the computer randomize rock, paper, or scissor*/
-    function computerPlay() {
-        let computerNumber = Math.floor(Math.random() *100);
-        console.log(computerNumber);
-        let computerChoice;
-        if (computerNumber <= 33) {
-            computerChoice = "Rock";    
-        } else if (computerNumber >= 67) {
-            computerChoice = "Paper";
-        } else {
-            computerChoice = "Scissor";
+
+    function game() {
+        function computerPlay() {
+            let computerNumber = Math.floor(Math.random() *100) +2;
+            let computerChoice;
+            if (computerNumber <= 33) {
+                computerChoice = "Rock";    
+            } else if (computerNumber >= 68) {
+                computerChoice = "Paper";
+            } else {
+                computerChoice = "Scissor";
+            }
+            return(computerChoice);
         }
-        return(computerChoice);
-    }
     
 
-    /* let the user type rock, paper. or scissor */
-    function humanPlay() {
-        let humanInput = prompt('Choose, Rock, Paper, Scissor: '+'');
-        let humanChoice = humanInput.toLowerCase();
-        
-        if (humanChoice === "scissor") {
-            humanChoice = "Scissor";
-        } else if (humanChoice === "rock") {;
-            humanChoice = "Rock";
-        } else if (humanChoice === "paper") {
-            humanChoice = "Paper"
-        } else {
-            alert("wrong input");
-        }
-        return(humanChoice);
-
-    }
+     /*let the user type rock, paper. or scissor */
+        function humanPlay() {
+            let humanInput = prompt("Choose: Rock, Paper or, Scissor: "+ "");
+            let humanChoice = humanInput.toLowerCase();
+            return(humanChoice);            
+        } 
     
     
-    const playerSelection = humanPlay();
-    const computerSelection = computerPlay();
+        const playerSelection = humanPlay();
+        const computerSelection = computerPlay();
 
     /* compare the input */
-    function playRound(playerSelection, computerSelection) {
+        function playRound(playerSelection, computerSelection) {
 
-        let result;
+            let result;
 
-        if (playerSelection === "Rock" && computerSelection === "Rock") {
-            result = "Both chose Rock it\'s a draw!";
-        } else if (playerSelection === "Paper" && computerSelection === "Paper") {
-            result = "Both chose Paper it\'s a draw!";
-        } else if (playerSelection === "Scissor" && computerSelection === "Scissor") {
-            result = "Both chose Scissor it\'s a draw!";
-        } else if (playerSelection === "Rock" && computerSelection === "Scissor") {
-            result = "You chose Rock and the computer chose Scissor, you win the Round!";
-        } else if (playerSelection === "Scissor" && computerSelection === "Paper") {
-            result = "You chose Scissor and the computer chose Paper, you win the Round!";
-        } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-            result = "You chose Paper and the computer chose Rock, you win the Round!";
-        } else if (playerSelection === "Rock" && computerSelection === "Paper") {
-            result = "You chose Rock and the computer chose Paper, you lose the Round!";
-        } else if (playerSelection === "Paper" && computerSelection === "Scissor") {
-            result = "You chose Paper and the computer chose Scissor, you lose the Round!";
-        } else if (playerSelection === "Scissor" && computerSelection === "Rock") {
-            result = "You chose Scissor and the computer chose Rock, you lose the Round!";
+            if (playerSelection === "rock" && computerSelection === "Scissor") {
+                result = "rockWin";
+            } else if (playerSelection === "scissor" && computerSelection === "Paper") {
+                result = "scissorWin";
+            } else if (playerSelection === "paper" && computerSelection === "Rock") {
+                result = "paperWin";
+            } else if (playerSelection === "rock" && computerSelection === "Paper") {
+                result = "rockLose";
+            } else if (playerSelection === "paper" && computerSelection === "Scissor") {
+                result = "paperLose";
+            } else if (playerSelection === "scissor" && computerSelection === "Rock") {
+                result = "scissorLose";
+            } else {
+                result = "draw";
+            }   
+ 
+
+              
+            return(result);
         }
-        return(result);
+
+    
+        return(playRound(playerSelection, computerSelection));
+        
     }
-    console.log(playRound(playerSelection, computerSelection));
-    alert(playRound(playerSelection, computerSelection));
+
+    let player = 0;
+    let computer = 0;
+    let score = game();
+ 
+    
+    if (score === "rockWin") {
+        console.log("You Win! Rock beats Scissor")
+        player++;
+    } else if (score === "scissorWin") {
+        console.log("You Win! Scissor beats Paper")
+        player++;
+    } else if (score === "paperWin") {
+        console.log("You Win! Paper beats Stone")
+        player++;
+    } else if (score === "rockLose") {
+        console.log("You Lose! Rock get beaten by Paper")
+        computer++;
+    } else if (score === "paperLose") {
+        console.log("You Lose! Paper get beaten by Scissor")
+        computer++;
+    } else if (score === "scissorLose") {
+        console.log("You Lose! Scissor get beaten by Rock")
+        computer++;
+    } else {
+        console.log("You got a draw!")
+    }
+
+    console.log("Player " + player + " : " + "Computer " + computer);
+    
+    let score1 = game();
+
+    if (score1 === "rockWin") {
+        console.log("You Win! Rock beats Scissor")
+        player++;
+    } else if (score1 === "scissorWin") {
+        console.log("You Win! Scissor beats Paper")
+        player++;
+    } else if (score1 === "paperWin") {
+        console.log("You Win! Paper beats Stone")
+        player++;
+    } else if (score1 === "rockLose") {
+        console.log("You Lose! Rock get beaten by Paper")
+        computer++;
+    } else if (score1 === "paperLose") {
+        console.log("You Lose! Paper get beaten by Scissor")
+        computer++;
+    } else if (score1 === "scissorLose") {
+        console.log("You Lose! Scissor get beaten by Rock")
+        computer++;
+    } else {
+        console.log("You got a draw!")
+    }
+
+    console.log("Player " + player + " : " + "Computer " + computer);
+
+    let score2 = game();
+
+    if (score2 === "rockWin") {
+        console.log("You Win! Rock beats Scissor")
+        player++;
+    } else if (score2 === "scissorWin") {
+        console.log("You Win! Scissor beats Paper")
+        player++;
+    } else if (score2 === "paperWin") {
+        console.log("You Win! Paper beats Stone")
+        player++;
+    } else if (score2 === "rockLose") {
+        console.log("You Lose! Rock get beaten by Paper")
+        computer++;
+    } else if (score2 === "paperLose") {
+        console.log("You Lose! Paper get beaten by Scissor")
+        computer++;
+    } else if (score2 === "scissorLose") {
+        console.log("You Lose! Scissor get beaten by Rock")
+        computer++;
+    } else {
+        console.log("You got a draw!")
+    }
+
+    console.log("Player " + player + " : " + "Computer " + computer);
+
+    let score3 = game();
+
+    if (score3 === "rockWin") {
+        console.log("You Win! Rock beats Scissor")
+        player++;
+    } else if (score3 === "scissorWin") {
+        console.log("You Win! Scissor beats Paper")
+        player++;
+    } else if (score3 === "paperWin") {
+        console.log("You Win! Paper beats Stone")
+        player++;
+    } else if (score3 === "rockLose") {
+        console.log("You Lose! Rock get beaten by Paper")
+        computer++;
+    } else if (score3 === "paperLose") {
+        console.log("You Lose! Paper get beaten by Scissor")
+        computer++;
+    } else if (score3 === "scissorLose") {
+        console.log("You Lose! Scissor get beaten by Rock")
+        computer++;
+    } else {
+        console.log("You got a draw!")
+    }
+
+    console.log("Player " + player + " : " + "Computer " + computer);
+
+    let score4 = game();
+
+    if (score4 === "rockWin") {
+        console.log("You Win! Rock beats Scissor")
+        player++;
+    } else if (score4 === "scissorWin") {
+        console.log("You Win! Scissor beats Paper")
+        player++;
+    } else if (score4 === "paperWin") {
+        console.log("You Win! Paper beats Stone")
+        player++;
+    } else if (score4 === "rockLose") {
+        console.log("You Lose! Rock get beaten by Paper")
+        computer++;
+    } else if (score4 === "paperLose") {
+        console.log("You Lose! Paper get beaten by Scissor")
+        computer++;
+    } else if (score4 === "scissorLose") {
+        console.log("You Lose! Scissor get beaten by Rock")
+        computer++;
+    } else {
+        console.log("You got a draw!")
+    }
+
+    console.log("Player " + player + " : " + "Computer " + computer);
+
+    if (player > computer) {
+        console.log("Congratulation You Won!")
+    } else if (player < computer) {
+        console.log("Computer Won! Better luck next time")
+    } else {
+        console.log("This game was a Draw")
+    } 
+
+    
 </script>
 </html>
